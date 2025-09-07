@@ -1,0 +1,32 @@
+<div class="card p-3">
+  <h3>{{ id ? 'Update' : 'Book' }} Appointment</h3>
+  <form (ngSubmit)="save()" #f="ngForm" class="row g-3">
+
+    <div class="col-md-6">
+      <label class="form-label">Patient Name</label>
+      <input class="form-control" name="patientName" [(ngModel)]="model.patientName" required>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Doctor</label>
+      <input class="form-control" name="doctorName" [(ngModel)]="model.doctorName" required>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">Start Time</label>
+      <input type="datetime-local" class="form-control" name="startTime" [(ngModel)]="model.startTime" required>
+    </div>
+
+    <div class="col-md-6">
+      <label class="form-label">End Time</label>
+      <input type="datetime-local" class="form-control" name="endTime" [(ngModel)]="model.endTime" required>
+    </div>
+
+    <div class="col-12">
+      <button class="btn btn-primary" type="submit">{{ id ? 'Update' : 'Book' }}</button>
+      <a class="btn btn-secondary ms-2" [routerLink]="['/']">Cancel</a>
+    </div>
+
+    <div *ngIf="error" class="text-danger mt-2">{{ error }}</div>
+  </form>
+</div>

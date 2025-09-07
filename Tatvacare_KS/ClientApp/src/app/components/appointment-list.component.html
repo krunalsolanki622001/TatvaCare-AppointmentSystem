@@ -1,0 +1,36 @@
+<div class="card p-3">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h3>Appointments</h3>
+    <a routerLink="/new" class="btn btn-success">Book Appointment</a>
+  </div>
+
+  <table class="table table-striped" *ngIf="list.length; else empty">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Patient</th>
+        <th>Doctor</th>
+        <th>Start</th>
+        <th>End</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let a of list">
+        <td>{{a.id}}</td>
+        <td>{{a.patientName}}</td>
+        <td>{{a.doctorName}}</td>
+        <td>{{a.startTime | date:'short'}}</td>
+        <td>{{a.endTime | date:'short'}}</td>
+        <td>
+          <a [routerLink]="['/edit', a.id]" class="btn btn-sm btn-primary">Edit</a>
+          <button class="btn btn-sm btn-danger ms-2" (click)="remove(a)">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <ng-template #empty>
+    <p>No appointments found. Click "Book Appointment" to add one.</p>
+  </ng-template>
+</div>
